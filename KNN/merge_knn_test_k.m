@@ -1,0 +1,42 @@
+
+k_values = [1, 2, 10, 20, 50, 100];
+
+trainFrac = .5;
+
+RUNS_PER_K_VALUE = 10;
+NUM_K_VALUES = length(k_values);
+
+load('knn_test_k_set1.mat');
+X= meanTestErrorMat;
+Y= meanTestFalsePosMat;
+
+load('knn_test_k_set2.mat');
+X= X+meanTestErrorMat;
+Y= Y+meanTestFalsePosMat;
+
+load('knn_test_k_set3.mat');
+X= X+meanTestErrorMat;
+Y= Y+meanTestFalsePosMat;
+
+load('knn_test_k_set4.mat');
+X= X+meanTestErrorMat;
+Y= Y+meanTestFalsePosMat;
+
+load('knn_test_k_set5.mat');
+X= X+meanTestErrorMat;
+Y= Y+meanTestFalsePosMat;
+
+meanTestErrorMat=X./5;
+meanTestFalsePosMat=Y./5;
+
+h = figure; 
+hold on;
+plot(k_values,meanTestErrorMat, 'r-o');
+plot(k_values,meanTestFalsePosMat, 'g-o');
+xlabel('K value (# of neighbors)');
+ylabel('Error rate');
+legend('Test', 'false pos');
+txt = sprintf('Training set size is %g of all data\nAverage of %d runs per K value', trainFrac, RUNS_PER_K_VALUE);
+title(txt)
+fname = sprintf('merge_knn_k_FINAL_%s.fig', datestr(now, 'dd.mm.yy_HH.MM.SS'));
+saveas(h, fname);
