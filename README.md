@@ -20,9 +20,13 @@ The directory tree is as follows:
 
 Project
    |---Data
+   
    |---KNN
+   
    |---NaiveBayes
+   
    |---Perceptron
+
 
 The "Data" directory contains:
  - The original email messages from Enron dataset:
