@@ -20,8 +20,11 @@ The directory tree is as follows:
 
 Project
    |---Data
+   
    |---KNN
+   
    |---NaiveBayes
+   
    |---Perceptron
 
 The "Data" directory contains:
